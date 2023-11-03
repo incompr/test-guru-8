@@ -1,10 +1,7 @@
 package incompr;
 
 import incompr.data.Product;
-import incompr.marketplace.SberMarket;
-import incompr.marketplace.Ozone;
-import incompr.marketplace.WB;
-import incompr.marketplace.YaMarket;
+import incompr.marketplace.*;
 
 import java.util.*;
 
@@ -15,6 +12,7 @@ public class Main {
         SberMarket sberMarket = new SberMarket(new HashMap<String, Product>());
         WB wb = new WB(new LinkedList<Product>());
         YaMarket yaMarket = new YaMarket(new ArrayDeque<Product>());
+        AliExpress aliExpress = new AliExpress(new HashSet<Product>());
 
         Product smartphone = new Product("smartphone", 25000, "Dong-Feng phone X5", 50, true);
         Product washMachine = new Product("WashMachine", 50000, "LG wash-machine", 20, false);
@@ -60,9 +58,20 @@ public class Main {
         System.out.println("YaMarket поиск:");
         System.out.println(yaMarket.yaMarketSearch(tv));
 
+        System.out.println("алиэкспресс добавление:");
+        aliExpress.aliAdd(smartphone);
+        aliExpress.aliAdd(washMachine);
+        aliExpress.aliAdd(tv);
+        System.out.println(aliExpress);
+        System.out.println("алиэкспресс удаление:");
+        aliExpress.aliRemove(washMachine);
+        System.out.println("алиэкспресс поиск:");
+        System.out.println(aliExpress.aliSearch(tv));
+
         ozone.printCatalog();
         sberMarket.printCatalog();
         wb.printCatalog();
         yaMarket.printCatalog();
+        aliExpress.printCatalog();
     }
 }
